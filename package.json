@@ -1,0 +1,17 @@
+{
+	"name":         "discover-db-stations",
+	"description":  "Build a graph of DB stations by querying departures.",
+	"version":      "0.1.0",
+	"main":         "index.js",
+	"files":        ["index.js", "walker.js"],
+	"keywords":     ["db", "deutsche bahn", "stations", "graph", "gtfs"],
+	"author":       "Jannis R <mail@jannisr.de>",
+	"homepage":     "https://github.com/derhuerst/discover-db-stations",
+	"repository":   "derhuerst/discover-db-stations",
+	"bugs":         "https://github.com/derhuerst/discover-db-stations/issues",
+	"license":      "ISC",
+	"engines":      {"node": ">=6"},
+	"dependencies": {
+		"queue": "^4.2.1"
+	}
+}
