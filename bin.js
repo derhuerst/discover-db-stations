@@ -2,6 +2,7 @@
 'use strict'
 
 const minimist = require('minimist')
+const esc = require('ansi-escapes')
 const ndjson = require('ndjson')
 
 const pkg = require('./package.json')
@@ -24,7 +25,17 @@ if (argv.v || argv.version) {
 	process.exit(0)
 }
 
+process.stderr.write('\n')
+const report = ({requests, stations, queued}) => {
+	process.stderr.write(esc.cursorUp(1) + esc.eraseLine + esc.cursorTo(0) + [
+		requests + (requests === 1 ? ' request' : ' requests'),
+		stations + (stations === 1 ? ' station' : ' stations'),
+		queued + ' queued'
+	].join(', ') + '\n')
+}
+
 const data = walk(argv._[0] || 8011102) // Berlin Gesundbrunnen
+data.on('stats', report)
 data.on('error', console.error)
 
 data
