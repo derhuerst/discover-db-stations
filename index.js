@@ -6,7 +6,8 @@ const db = require('db-hafas')
 
 const defaults = {
 	concurrency: 2,
-	timeout: 10 * 1000
+	timeout: 10 * 1000,
+	autostart: false
 }
 
 const walk = (first, opt = {}) => {
@@ -86,7 +87,7 @@ const walk = (first, opt = {}) => {
 
 	queue.on('error', (err) => out.emit('error', err))
 	queue.on('end', () => out.end())
-	queue.on('timeout', (_, job) => console.error(job.toString()))
+	out.stop = () => queue.end()
 
 	setImmediate(() => {
 		queue.push(queryDepartures(first))

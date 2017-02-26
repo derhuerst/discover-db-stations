@@ -16,6 +16,9 @@ ${pkg.description}
 
 Usage:
 	discover-db-stations [first] > stations.ndjson
+
+Options:
+	-s, --silent	Don't show progress reports on stderr.
 `)
 	process.exit(0)
 }
@@ -35,7 +38,7 @@ const report = ({requests, stations, queued}) => {
 }
 
 const data = walk(argv._[0] || 8011102) // Berlin Gesundbrunnen
-data.on('stats', report)
+if (!argv.s && !argv.silent) data.on('stats', report)
 data.on('error', console.error)
 
 data
