@@ -3,7 +3,8 @@
 	"description":  "Build a graph of DB stations by querying departures.",
 	"version":      "0.1.0",
 	"main":         "index.js",
-	"files":        ["index.js"],
+	"files":        ["index.js", "bin.js"],
+	"bin":          {"discover-db-stations": "./bin.js"},
 	"keywords":     ["db", "deutsche bahn", "stations", "graph", "gtfs"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/discover-db-stations",
@@ -13,7 +14,16 @@
 	"engines":      {"node": ">=6"},
 	"dependencies": {
 		"db-hafas": "^0.1.0",
-		"lodash.flatten": "^4.4.0",
+		"minimist": "^1.2.0",
+		"ndjson": "^1.5.0",
 		"queue": "^4.2.1"
+	},
+	"devDependencies": {
+		"tape": "^4.6.3",
+		"tap-min": "^1.2.0"
+	},
+	"scripts": {
+		"test": "node test.js | tap-min",
+		"prepublish": "npm test"
 	}
 }
