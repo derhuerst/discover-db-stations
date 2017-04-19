@@ -15,7 +15,7 @@
 	"dependencies": {
 		"ansi-diff-stream": "^1.2.0",
 		"ansi-escapes": "^1.4.0",
-		"db-hafas": "^0.1.0",
+		"db-hafas": "^0.2.0",
 		"minimist": "^1.2.0",
 		"ndjson": "^1.5.0",
 		"queue": "^4.2.1"
