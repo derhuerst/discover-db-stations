@@ -16,16 +16,38 @@ I ran the script for testing purposes and it gave me **66591 stations** (as oppo
 
 ```shell
 npm install -g discover-db-stations
+# or without ad-hoc install
+npx discover-db-stations <station-id> >stations.ndjson
 ```
 
 
 ## Usage
+
+### using the command line
 
 ```shell
 discover-db-stations <station-id> >stations.ndjson
 ```
 
 [`bin.js`](bin.js) is an example for how to use this module programmatically.
+
+### using JavaScript
+
+```js
+const walk = require('discover-db-stations')
+
+walk(stationId) // where to start
+.on('data', console.log)
+.on('error', console.error)
+```
+
+`walk()` returns a [readable stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) [in object mode](https://nodejs.org/api/stream.html#stream_object_mode). It emits the following events:
+
+- `data`: a new station that has been discovered
+- `stats`: an object with the following keys:
+	- `stations`: the number of stations discovered
+	- `requests`: the number of requests sent
+	- `queued`: the number of queued station IDs
 
 
 ## Contributing
