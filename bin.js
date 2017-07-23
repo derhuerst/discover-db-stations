@@ -30,7 +30,7 @@ if (argv.v || argv.version) {
 	process.exit(0)
 }
 
-const data = walk(argv._[0] || 8011102) // Berlin Gesundbrunnen
+const data = walk(argv._[0] + '' || '8011102') // Berlin Gesundbrunnen
 data
 .on('error', console.error)
 .pipe(ndjson.stringify())

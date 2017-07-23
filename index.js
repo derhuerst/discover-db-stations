@@ -35,7 +35,7 @@ const walk = (first, opt = {}) => {
 			nrOfStations++
 			out.emit('data', station)
 			queue.push(queryDepartures(station.id))
-			if (from) queue.push(queryRoutes(from, station.id))
+			if (from) queue.push(queryJourneys(from, station.id))
 		}
 		stats()
 	}
@@ -67,14 +67,14 @@ const walk = (first, opt = {}) => {
 		.catch(cb)
 	}
 
-	const queryRoutes = (from, to) => (cb) => {
+	const queryJourneys = (from, to) => (cb) => {
 		nrOfRequests++
 		stats()
 
-		db.routes(from, to, {passedStations: true})
-		.then((routes) => {
-			for (let route of routes) {
-				for (let part of route.parts) {
+		db.journeys(from, to, {passedStations: true})
+		.then((journeys) => {
+			for (let journey of journeys) {
+				for (let part of journey.parts) {
 					if (!Array.isArray(part.passed)) continue
 					const stations = part.passed.map((dep) => dep.station)
 					onStations(stations)
