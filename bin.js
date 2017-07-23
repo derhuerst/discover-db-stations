@@ -46,10 +46,11 @@ if (!argv.s && !argv.silent) {
 		reporter.pipe(process.stderr)
 	}
 
-	const report = ({requests, stations, queued}) => {
+	const report = ({requests, stations, edges, queued}) => {
 		reporter.write([
 			requests + (requests === 1 ? ' request' : ' requests'),
 			stations + (stations === 1 ? ' station' : ' stations'),
+			edges + (edges === 1 ? ' edge' : ' edges'),
 			queued + ' queued'
 		].join(', ') + (clearReports ? '' : '\n'))
 	}

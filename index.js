@@ -16,12 +16,15 @@ const walk = (first, opt = {}) => {
 	const out = new PassThrough({objectMode: true})
 	const queue = Queue(opt)
 	const visited = {}
+	const edges = {} // by fromID-toID
 	let nrOfStations = 0
+	let nrOfEdges = 0
 	let nrOfRequests = 0
 
 	const stats = () => {
 		out.emit('stats', {
 			stations: nrOfStations,
+			edges: nrOfEdges,
 			requests: nrOfRequests,
 			queued: queue.length
 		})
@@ -38,6 +41,15 @@ const walk = (first, opt = {}) => {
 			if (from) queue.push(queryJourneys(from, station.id))
 		}
 		stats()
+	}
+
+	const onEdge = (from, to, duration, line) => {
+		const signature = [from.id, to.id, duration, line.name].join('-')
+		if (edges[signature]) return
+		edges[signature] = true
+
+		nrOfEdges++
+		out.emit('edge', {from, to, duration, line})
 	}
 
 	const queryLocations = (name, from) => (cb) => {
@@ -76,6 +88,17 @@ const walk = (first, opt = {}) => {
 			for (let journey of journeys) {
 				for (let part of journey.parts) {
 					if (!Array.isArray(part.passed)) continue
+
+					for (let i = 1; i < part.passed.length; i++) {
+						const p1 = part.passed[i - 1]
+						const p2 = part.passed[i]
+						const start = p1.arrival || p1.departure
+						const end = p2.arrival || p2.departure
+						if (!start || !end) continue
+						const duration = new Date(end) - new Date(start)
+						onEdge(p1.station, p2.station, duration, part.line)
+					}
+
 					const stations = part.passed.map((dep) => dep.station)
 					onStations(stations)
 				}

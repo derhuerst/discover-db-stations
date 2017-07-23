@@ -48,6 +48,11 @@ walk(stationId) // where to start
 	- `stations`: the number of stations discovered
 	- `requests`: the number of requests sent
 	- `queued`: the number of queued station IDs
+- `edge`: a connection between two stations, with the following keys:
+	- `from`: an [FPTF](https://github.com/public-transport/friendly-public-transport-format) `station` object
+	- `to`: an [FPTF](https://github.com/public-transport/friendly-public-transport-format) `station` object
+	- `duration`: time to travel, in milliseconds
+	- `line`: an [db-hafas `line` object](https://github.com/derhuerst/db-hafas/blob/master/docs/journeys.md#response)
 
 
 ## Contributing
