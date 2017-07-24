@@ -14,7 +14,7 @@
 	"engines":      {"node": ">=6"},
 	"dependencies": {
 		"ansi-diff-stream": "^1.2.0",
-		"ansi-escapes": "^1.4.0",
+		"ansi-escapes": "^2.0.0",
 		"db-hafas": "^1.0.1",
 		"minimist": "^1.2.0",
 		"ndjson": "^1.5.0",
