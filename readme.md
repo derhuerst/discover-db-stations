@@ -1,5 +1,7 @@
 # discover-db-stations
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/derhuerst/discover-db-stations.svg)](https://greenkeeper.io/)
+
 **Discover [Deutsche Bahn](http://db.de/) stations by querying departures.** It tries to find all stations that all trains known by Deutsche Bahn stop at.
 
 [![npm version](https://img.shields.io/npm/v/discover-db-stations.svg)](https://www.npmjs.com/package/discover-db-stations)
