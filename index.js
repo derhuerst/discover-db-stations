@@ -3,6 +3,10 @@
 const {PassThrough} = require('stream')
 const Queue = require('queue')
 const db = require('db-hafas')
+const floor = require('floordate')
+
+const hour = 60 * 60 * 1000
+const week = 7 * 24 * hour
 
 const defaults = {
 	concurrency: 2,
@@ -11,9 +15,16 @@ const defaults = {
 
 const walk = (first, opt = {}) => {
 	opt = Object.assign({}, defaults, opt)
+	if (!opt.when) {
+		// next Monday 10 am
+		opt.when = new Date(+floor(new Date(), 'week') + week + 10 * hour)
+	}
 
 	const out = new PassThrough({objectMode: true})
-	const queue = Queue(opt)
+	const queue = Queue({
+		concurrency: opt.concurrency,
+		timeout: opt.timeout
+	})
 	const visited = {}
 	const edges = {} // by fromID-toID
 	let nrOfStations = 0
@@ -67,7 +78,7 @@ const walk = (first, opt = {}) => {
 		nrOfRequests++
 		stats()
 
-		db.departures(id)
+		db.departures(id, {when: opt.when})
 		.then((deps) => {
 			for (let dep of deps) {
 				const from = dep.station.id
@@ -82,7 +93,7 @@ const walk = (first, opt = {}) => {
 		nrOfRequests++
 		stats()
 
-		db.journeys(from, to, {passedStations: true})
+		db.journeys(from, to, {passedStations: true, when: opt.when})
 		.then((journeys) => {
 			for (let journey of journeys) {
 				for (let part of journey.parts) {

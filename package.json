@@ -1,7 +1,7 @@
 {
 	"name":         "discover-db-stations",
 	"description":  "Discover DB stations by querying departures.",
-	"version":      "0.1.0",
+	"version":      "0.2.0",
 	"main":         "index.js",
 	"files":        ["index.js", "bin.js"],
 	"bin":          {"discover-db-stations": "./bin.js"},
@@ -16,6 +16,7 @@
 		"ansi-diff-stream": "^1.2.0",
 		"ansi-escapes": "^1.4.0",
 		"db-hafas": "^1.0.1",
+		"floordate": "^3.0.0",
 		"minimist": "^1.2.0",
 		"ndjson": "^1.5.0",
 		"queue": "^4.2.1"
