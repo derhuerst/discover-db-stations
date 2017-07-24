@@ -6,8 +6,7 @@ const db = require('db-hafas')
 
 const defaults = {
 	concurrency: 2,
-	timeout: 10 * 1000,
-	autostart: false
+	timeout: 10 * 10000
 }
 
 const walk = (first, opt = {}) => {

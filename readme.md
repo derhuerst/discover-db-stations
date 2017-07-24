@@ -55,6 +55,20 @@ walk(stationId) // where to start
 	- `line`: an [db-hafas `line` object](https://github.com/derhuerst/db-hafas/blob/master/docs/journeys.md#response)
 
 
+## API
+
+```js
+walk(stationId, [opt])
+```
+
+`stationId` must be a string and a valid [IBNR](https://de.wikipedia.org/wiki/Internationale_Bahnhofsnummer).
+
+`opt` may have the following keys. It will be passed into [`queue()`](https://github.com/jessetane/queue#constructor).
+
+- `concurrency`: number of requests run in parallel – default: `2`
+- `timeout`: timeout for a single job in milliseconds – default: `10000`
+
+
 ## Contributing
 
 If you **have a question**, **found a bug** or want to **propose a feature**, have a look at [the issues page](https://github.com/derhuerst/discover-db-stations/issues).
