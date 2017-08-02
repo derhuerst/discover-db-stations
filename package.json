@@ -17,7 +17,7 @@
 		"ansi-escapes": "^1.4.0",
 		"db-hafas": "^1.0.1",
 		"floordate": "^3.0.0",
-		"minimist": "^1.2.0",
+		"mri": "^1.1.0",
 		"ndjson": "^1.5.0",
 		"queue": "^4.2.1"
 	},

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-const minimist = require('minimist')
+const mri = require('mri')
 const {isatty} = require('tty')
 const differ = require('ansi-diff-stream')
 const esc = require('ansi-escapes')
@@ -10,7 +10,9 @@ const ndjson = require('ndjson')
 const pkg = require('./package.json')
 const walk = require('.')
 
-const argv = minimist(process.argv.slice(2))
+const argv = mri(process.argv.slice(2), {
+	boolean: ['help', 'h', 'version', 'v', 'silent', 's']
+})
 
 if (argv.h || argv.help) {
 	process.stdout.write(`\
