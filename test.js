@@ -8,9 +8,10 @@ const assertValidStation = (s) => {
 	assert.strictEqual(s.type, 'station')
 	assert.strictEqual(typeof s.id, 'string')
 	assert.strictEqual(typeof s.name, 'string')
-	assert.ok(s.coordinates)
-	assert.strictEqual(typeof s.coordinates.latitude, 'number')
-	assert.strictEqual(typeof s.coordinates.longitude, 'number')
+	assert.ok(s.location)
+	assert.strictEqual(s.location.type, 'location')
+	assert.strictEqual(typeof s.location.latitude, 'number')
+	assert.strictEqual(typeof s.location.longitude, 'number')
 }
 
 const data = walk('8011102') // Berlin Gesundbrunnen

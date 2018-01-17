@@ -26,13 +26,8 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"ansi-diff-stream": "^1.2.0",
-		"ansi-escapes": "^1.4.0",
-		"db-hafas": "^1.0.1",
-		"floordate": "^3.0.0",
-		"mri": "^1.1.0",
-		"ndjson": "^1.5.0",
-		"queue": "^4.2.1"
+		"db-hafas": "^2.0.0",
+		"hafas-discover-stations": "^1.0.0"
 	},
 	"scripts": {
 		"test": "node test.js",
