@@ -1,17 +1,30 @@
 {
-	"name":         "discover-db-stations",
-	"description":  "Discover DB stations by querying departures.",
-	"version":      "0.2.0",
-	"main":         "index.js",
-	"files":        ["index.js", "bin.js"],
-	"bin":          {"discover-db-stations": "./bin.js"},
-	"keywords":     ["db", "deutsche bahn", "stations", "graph", "gtfs"],
-	"author":       "Jannis R <mail@jannisr.de>",
-	"homepage":     "https://github.com/derhuerst/discover-db-stations",
-	"repository":   "derhuerst/discover-db-stations",
-	"bugs":         "https://github.com/derhuerst/discover-db-stations/issues",
-	"license":      "ISC",
-	"engines":      {"node": ">=6"},
+	"name": "discover-db-stations",
+	"description": "Discover DB stations by querying departures.",
+	"version": "0.2.0",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"bin.js"
+	],
+	"bin": {
+		"discover-db-stations": "./bin.js"
+	},
+	"keywords": [
+		"db",
+		"deutsche bahn",
+		"stations",
+		"graph",
+		"gtfs"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/discover-db-stations",
+	"repository": "derhuerst/discover-db-stations",
+	"bugs": "https://github.com/derhuerst/discover-db-stations/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
 	"dependencies": {
 		"ansi-diff-stream": "^1.2.0",
 		"ansi-escapes": "^1.4.0",
@@ -23,6 +36,6 @@
 	},
 	"scripts": {
 		"test": "node test.js",
-		"prepublish": "npm test"
+		"prepublishOnly": "npm test"
 	}
 }
