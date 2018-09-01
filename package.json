@@ -1,7 +1,7 @@
 {
 	"name": "discover-db-stations",
 	"description": "Discover DB stations by querying departures.",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -30,7 +30,7 @@
 		"hafas-discover-stations": "^2.2.2"
 	},
 	"scripts": {
-		"test": "node test.js",
+		"test": "env NODE_ENV=dev node test.js",
 		"prepublishOnly": "npm test"
 	}
 }
