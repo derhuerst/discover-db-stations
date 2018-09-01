@@ -5,7 +5,7 @@ const assert = require('assert')
 const walk = require('.')
 
 const assertValidStation = (s) => {
-	assert.strictEqual(s.type, 'station')
+	assert.ok(s.type === 'stop' || s.type === 'station')
 	assert.strictEqual(typeof s.id, 'string')
 	assert.strictEqual(typeof s.name, 'string')
 	assert.ok(s.location)

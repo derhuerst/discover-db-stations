@@ -1,8 +1,9 @@
 'use strict'
 
 const createWalk = require('hafas-discover-stations')
-const db = require('db-hafas')
+const createHafas = require('db-hafas')
 
-const walk = createWalk(db)
+const hafas = createHafas('discover-db-stations')
+const walk = createWalk(hafas)
 
 module.exports = walk

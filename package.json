@@ -26,8 +26,8 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"db-hafas": "^2.0.0",
-		"hafas-discover-stations": "^1.0.0"
+		"db-hafas": "^3.0.1",
+		"hafas-discover-stations": "^2.2.2"
 	},
 	"scripts": {
 		"test": "node test.js",
